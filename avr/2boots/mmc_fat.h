@@ -56,15 +56,24 @@ extern uint8_t buff[512];
  #define SPDR	SPDR0
 #endif
 
-//Port & Pin definitions.
+#if defined (_AVR_ATmega2560_)
 //Settings below are recommended for a MEGA168 and MEGA328
-#define SPI_PORT PORTB
-#define SPI_DDR  DDRB
-#define SPI_MISO	PB4		//DataOut of MMC
-#define SPI_MOSI	PB3		//DataIn of  MMC
-#define SPI_CLK  	PB5		//Clock of MMC
-#define SPI_SS          PB2             //SS pin of SPI interface
+ #define SPI_PORT PORTB
+ #define SPI_MISO	PB3		//DataOut of MMC
+ #define SPI_MOSI	PB2		//DataIn of  MMC
+ #define SPI_CLK  	PB1		//Clock of MMC
+ #define SPI_SS     PB4     //SS pin of SPI interface
 
+#else
+ //Port & Pin definitions.
+ //Settings below are recommended for a MEGA168 and MEGA328
+ #define SPI_PORT PORTB
+ #define SPI_DDR  DDRB
+ #define SPI_MISO	PB4		//DataOut of MMC
+ #define SPI_MOSI	PB3		//DataIn of  MMC
+ #define SPI_CLK  	PB5		//Clock of MMC
+ #define SPI_SS          PB2             //SS pin of SPI interface
+#endif
 // These define the Pin, Port and DDR of the Chip Select to the MMC...
 // Used to be defined here, but is now in the Makefile 
 //#define MMC_CS		PB2		//also change MMC_PORT and MMC_DDR acordingly

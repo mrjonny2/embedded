@@ -13,7 +13,7 @@
 CC       = avr-gcc
 OBJCOPY  = avr-objcopy
 OBJDUMP  = avr-objdump
-OPTIMIZE = -Os -funsigned-char -fno-split-wide-types -fno-inline-small-functions -mcall-prologues -ffunction-sections -fdata-sections -ffreestanding -combine -fwhole-program -fno-jump-tables
+OPTIMIZE = -Os -funsigned-char -fno-split-wide-types -fno-inline-small-functions -mcall-prologues -ffunction-sections -fdata-sections -ffreestanding -fno-jump-tables -fno-tree-scev-cprop -fno-split-wide-types
 AVRSIZE  = avr-size
 
 override CFLAGS  = -g -Wall $(OPTIMIZE) -mmcu=$(MCU) -DF_CPU=$(FCPU) $(DEFS)
@@ -68,6 +68,11 @@ board-ftthcont: FCPUS = 8000000L
 board-ftthcont: MCUS  = atmega328p
 board-ftthcont: MMC_CSS = PB2
 
+#ArduinoMegaPro
+board-ArduinoMegaPro: FCPUS = 8000000L
+board-ArduinoMegaPro: MCUS = atmega2560
+board-ArduinoMegaPro: MMC_CSS = PB0
+
 
 
 # set certain variables per MCU
@@ -80,6 +85,9 @@ board-ftthcont: MMC_CSS = PB2
 
 #atmega1280:
 2boots-atmega1280%: LDSECTION := --section-start=.text=0x1F000 
+
+#atmega2560:
+2boots-atmega2560%: LDSECTION := --section-start=.text=0x1F000
 
 
 # This rule finally builds 2boots.
