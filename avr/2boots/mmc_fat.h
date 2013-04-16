@@ -56,9 +56,10 @@ extern uint8_t buff[512];
  #define SPDR	SPDR0
 #endif
 
-#if defined (_AVR_ATmega2560_)
+#if defined (__AVR_ATmega2560__)
 //Settings below are recommended for a MEGA168 and MEGA328
  #define SPI_PORT PORTB
+ #define SPI_DDR  DDRB
  #define SPI_MISO	PB3		//DataOut of MMC
  #define SPI_MOSI	PB2		//DataIn of  MMC
  #define SPI_CLK  	PB1		//Clock of MMC

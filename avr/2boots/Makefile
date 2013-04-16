@@ -21,7 +21,7 @@ override LDFLAGS = -Wl,$(LDSECTION) -Wl,--relax -nostartfiles -Wl,-gc-sections
 
 # these are our actual source files
 # the BOARD variable will be replaced later, depending on which board is beeing compiled
-SRC = $(BOARD).c mmc_fat.c stk500v1.c prog_flash.c
+SRC = $(BOARD).c mmc_fat.c prog_flash.c
 
 # the 'all' rule should build 2boots for all supported boards
 # to create one target per board-*.c file we use a $(wildcard... ) rule

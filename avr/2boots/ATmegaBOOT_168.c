@@ -3,7 +3,6 @@
 /* some includes */
 #include <inttypes.h>
 #include <avr/io.h>
-#include "stk500v1.h"
 #include "mmc_fat.h"
 
 /* function prototypes */
@@ -44,10 +43,6 @@ void main(void)
 	mmc_updater();
 #endif
 
-#ifndef DISABLE_SERIAL
-	/* the fall back to serial */
-	stk500v1();
-#endif
 		
 	/* we reset via watchdog */
 	/* in order to re-enable the RWW section (see prog_flash.c...) */

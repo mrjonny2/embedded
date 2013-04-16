@@ -36,7 +36,6 @@
 /* some includes */
 #include <inttypes.h>
 #include <avr/io.h>
-#include "stk500v1.h"
 #include "mmc_fat.h"
 
 /* function prototype */
@@ -66,8 +65,7 @@ void main(void)
 	asm volatile ( "clr __zero_reg__" );
 	SP=RAMEND;
 
-	/* try first serial, to not let the programmer timeout in case there is an MMC included */
-	stk500v1();
+
 
 #ifdef MMC_CS
 	/* then try the mmc, less time critical... */

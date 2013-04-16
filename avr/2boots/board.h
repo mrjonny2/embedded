@@ -1,1 +1,1 @@
-#include "board-ArduinoMegaPro.h"
+#include "board-arduino.h"
